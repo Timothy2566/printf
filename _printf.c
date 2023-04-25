@@ -1,13 +1,9 @@
 #include "main.h"
-
-void print_buffer(char buffer[], int *buff_ind);
-
 /**
  * _printf - Printf function
  * @format: format.
  * Return: Printed chars.
  */
-
 int _printf(const char *format, ...)
 {
 	int t, printed = 0, printed_chars = 0;
@@ -17,20 +13,15 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(list, format);
-
 	for (t = 0; format && format[t] != '\0'; t++)
 	{
 		if (format[t] != '%')
 		{
 			buffer[buff_ind++] = format[t];
-
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
-
 			/* write(1, &format[t], 1);*/
-
 			printed_chars++;
 		}
 		else
@@ -46,14 +37,11 @@ int _printf(const char *format, ...)
 			if (printed == -1)
 				return (-1);
 			printed_chars += printed;
-
 		}
 
 	}
 	print_buffer(buffer, &buff_ind);
-
 	va_end(list);
-
 	return (printed_chars);
 
 }
